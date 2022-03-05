@@ -7,106 +7,88 @@
  */
 
 import React from 'react';
-import type {Node} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
+  View
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+    <SafeAreaView>
+      <Box variation="variation1"/>
+      <Box variation="variation2"/>
+      <Box variation="variation3"/>
+      <Box variation="variation4"/>
+      <Box variation="noVariation"/>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+const Box = (props) => {
+  if (props.variation === 'variation1') {
+    return <View style={[style.style1]} />
+  } else if (props.variation === 'variation2') {
+    return <View style={[style.style2]} />
+  } else if (props.variation === 'variation3') {
+    return <View style={[style.style3]} />
+  } else if (props.variation === 'variation4') {
+    return <View style={[style.style4]} />
+  } else {
+    return <View style={[style.style1]} />
+  }
+};
+
+const style = {
+  style1: {
+    backgroundColor: "yellow",
+    flex: 1,
+    flexDirection: "row",
+    padding: 24,
+    marginLeft: 24,
+    marginRight: 24,
+    marginTop: 25,
+    marginBottom: 25,
+    borderColor: "#90ee90",
+    borderWidth: 4
+  }, 
+  style2: {
+    backgroundColor: "yellow",
+    flex: 1,
+    flexDirection: "row",
+    padding: 24,
+    marginLeft: 24,
+    marginRight: 24,
+    marginTop: 25,
+    marginBottom: 25,
+    borderColor: "#90ee90",
+    borderWidth: 4,
+    borderStyle: "dashed"
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  style3: {
+    backgroundColor: "yellow",
+    flex: 1,
+    flexDirection: "row",
+    padding: 24,
+    marginLeft: 24,
+    marginRight: 24,
+    marginTop: 25,
+    marginBottom: 25,
+    borderColor: "red",
+    borderWidth: 10
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+  style4: {
+    backgroundColor: "yellow",
+    flex: 1,
+    flexDirection: "row",
+    padding: 24,
+    marginLeft: 24,
+    marginRight: 24,
+    marginTop: 25,
+    marginBottom: 25,
+    borderColor: "#90ee90",
+    borderWidth: 4,
+    borderStyle: "dotted"
+  }
+}
 
 export default App;
